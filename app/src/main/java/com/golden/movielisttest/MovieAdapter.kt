@@ -27,6 +27,7 @@ class MovieAdapter(private val dataset: List<String>): RecyclerView.Adapter<Movi
         }
             holder.tvMovieTitle.text = dataset[position]
     }
+    //end of class
 
         override fun getItemCount(): Int {
             return dataset.size
