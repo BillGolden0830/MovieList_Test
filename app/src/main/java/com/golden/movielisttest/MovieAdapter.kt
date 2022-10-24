@@ -2,10 +2,13 @@ package com.golden.movielisttest
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.golden.movielisttest.model.MovieResponse
+import com.squareup.picasso3.Picasso
 
-class MovieAdapter(private val dataset: List<String>): RecyclerView.Adapter<MovieViewHolder>() {
+class MovieAdapter(private val dataset: List<MovieResponse>): RecyclerView.Adapter<MovieViewHolder>() {
 
     /*
     Uset to create the ViewHolder
@@ -25,7 +28,22 @@ class MovieAdapter(private val dataset: List<String>): RecyclerView.Adapter<Movi
         if (position % 2 == 0) {
             holder.itemView.setBackgroundColor(Color.BLUE)
         }
-            holder.tvMovieTitle.text = dataset[position]
+
+        holder.tvMovieTitle.text = dataset[position].title
+        holder.tvRelleaseYear.text = dataset[position].releaseYear.toString()
+        holder.rbRatingBar.rating = dataset[position].rating
+        holder.tvGenre.text = dataset[position].genre.toString()
+
+        holder.fbShowDetail.setOnClickListener{
+            holder.wgDetailGroup.visibility = View.VISIBLE
+        }
+
+
+            Picasso.Builder(holder.itemView.context)
+                .build()
+                .load(dataset[position].image)
+                .into(holder.imgMoviePoster)
+
     }
     //end of class
 
