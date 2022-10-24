@@ -37,12 +37,12 @@ class MovieNetwork {
         val builder = StringBuilder()
         val reader = BufferedReader(InputStreamReader(IS))
         var line: String? = reader.readLine()
-         do{
+        while(line != null){
              builder.append(line)
-             builder.append("/n")
+             builder.append("\n")
              line = reader.readLine()
 
-         }while(line != null)
+         }
 
         if (builder.length == 0) {
             return "404"
